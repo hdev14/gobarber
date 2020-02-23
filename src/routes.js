@@ -22,7 +22,7 @@ routes.use(auth);
 
 routes.put('/users', UserController.update);
 
-routes.post('/files', upload.single('avatar'), (req, res) => {
+routes.post('/files', upload.single('file'), (req, res) => {
   return res.json({ ok: true });
 });
 
