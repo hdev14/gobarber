@@ -29,6 +29,7 @@ class AppointmentController {
           ],
         },
       ],
+      order: ['date'],
     });
 
     return res.send(appointments);
