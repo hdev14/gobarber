@@ -16,9 +16,7 @@ class Database {
 
     models
       .map(model => model.init(this.connection))
-      .forEach(model => {
-        console.log(model);
-      });
+      .map(model => model.associate && model.associate(this.connection.models));
   }
 }
 

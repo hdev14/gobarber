@@ -21,7 +21,7 @@ routes.post('/sessions', SessionController.store);
 
 routes.use(auth);
 
-routes.put('/users', UserController.update);
+routes.put('/users/', UserController.update);
 
 routes.post('/files', upload.single('file'), FileController.store);
 

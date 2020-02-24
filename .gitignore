@@ -6,3 +6,4 @@ node_modules/
 !.vscode/extensions.json
 *.code-workspace
 yarn-error.log
+tmp/uploads/*.*
