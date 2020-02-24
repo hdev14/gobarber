@@ -9,6 +9,8 @@ class File extends Sequelize.Model {
       },
       { sequelize }
     );
+
+    return this;
   }
 }
 
