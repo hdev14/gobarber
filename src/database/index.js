@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import Mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 import DbCofing from '../config/database';
 
@@ -24,10 +24,14 @@ class Database {
   }
 
   mongo() {
-    this.mongoConnection = Mongoose.connect('http://localhost:27017/gobarber', {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-    });
+    this.mongoConnection = mongoose.connect(
+      'mongodb://localhost:27017/gobarber',
+      {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+        useUnifiedTopology: true,
+      }
+    );
   }
 }
 
