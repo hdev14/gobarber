@@ -27,7 +27,7 @@ class NotificationController {
       { read: true },
       { new: true }
     );
-    return res.json(notification);
+    return res.status(200).json(notification);
   }
 }
 
