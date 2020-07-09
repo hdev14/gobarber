@@ -13,7 +13,7 @@ class SessionController {
         {
           model: File,
           as: 'avatar',
-          attributes: ['path', 'url'],
+          attributes: ['id', 'path', 'url'],
         },
       ],
     });
@@ -27,10 +27,13 @@ class SessionController {
     }
 
     const { id, name, provider, avatar } = user;
+    const token = jwt.sign({ id }, auth.secretKey, {
+      expiresIn: auth.expiresIn,
+    });
 
     return res.json({
       user: { id, name, email, provider, avatar },
-      token: jwt.sign({ id }, auth.secretKey, { expiresIn: auth.expiresIn }),
+      token,
     });
   }
 }
