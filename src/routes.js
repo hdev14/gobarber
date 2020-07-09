@@ -4,6 +4,11 @@ import multer from 'multer';
 // CONFIGS
 import multerConfig from './config/multer';
 
+// VALIDATORS
+import SessionValidator from './app/validators/SessionValidator';
+import UserValidator from './app/validators/UserValidator';
+import AppointmentValidator from './app/validators/AppointmentValidator';
+
 // CONTROLLERS
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
@@ -21,18 +26,22 @@ const upload = multer(multerConfig);
 
 const routes = Router();
 
-routes.post('/users', UserController.store);
-routes.post('/sessions', SessionController.store);
+routes.post('/users', UserValidator.store, UserController.store);
+routes.post('/sessions', SessionValidator.store, SessionController.store);
 
 routes.use(auth);
 
-routes.put('/users/', UserController.update);
+routes.put('/users/', UserValidator.update, UserController.update);
 
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
 
 routes.get('/appointments', AppointmentController.index);
-routes.post('/appointments', AppointmentController.store);
+routes.post(
+  '/appointments',
+  AppointmentValidator.store,
+  AppointmentController.store
+);
 routes.delete('/appointments/:id', AppointmentController.delete);
 
 routes.get('/schedule', ScheduleController.index);
